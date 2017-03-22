@@ -1,0 +1,26 @@
+﻿
+body {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+.box {
+    box-sizing: border-box;
+}
+
+.header {
+    border-bottom: 1px solid #c0c0c0;
+    padding: .75em 0;
+    margin-bottom: 1.5em;
+     background-color: #f0f6f6;
+}
+
+.main {
+    width: 70%;
+    float: left;
+}
+
+.sidebar {
+    width: 30%;
+    float: right;
+    padding-left: 1.5em;
+}

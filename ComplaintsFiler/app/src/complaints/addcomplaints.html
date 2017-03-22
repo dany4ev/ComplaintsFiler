@@ -1,0 +1,64 @@
+<!--<div class="container">
+    <div class="row">
+        <h1>Add Carrier</h1>
+        <form class="form-horizontal customDim" novalidate name="addCarrierForm" ng-submit="vm.addCarrier(addCarrierForm, vm._carrier)">
+            <div class="form-group row" ng-class="{ 'has-error': addCarrierForm.carrierName.$touched && addCarrierForm.carrierName.$invalid }">
+                <label class="col-xs-3 col-form-label">Name</label>
+                <div class="col-xs-9">
+                    <input class="form-control" type="text" placeholder="Carrier Name" name="carrierName" ng-model="vm._carrier.name" ng-minlength="3" ng-maxlength="50" required />
+                    <div class="help-block" ng-messages="addCarrierForm.carrierName.$error" ng-show="addCarrierForm.carrierName.$touched">
+                        <div ng-messages-include="name-validation-messages.html"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row" ng-class="{ 'has-error': addCarrierForm.carrierEmailAddress.$touched && addCarrierForm.carrierEmailAddress.$invalid }">
+                <label class="col-xs-3 col-form-label">Email Address</label>
+                <div class="col-xs-9">
+                    <input class="form-control" type="email" placeholder="Carrier Email Address" name="carrierEmailAddress" ng-model="vm._carrier.emailAddress" ng-minlength="5" ng-maxlength="50" required />
+                    <div class="help-block" ng-messages="addCarrierForm.carrierEmailAddress.$error" ng-show="addCarrierForm.carrierEmailAddress.$touched">
+                        <div ng-messages-include="email-validation-messages.html"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row" ng-class="{ 'has-error': addCarrierForm.carrierIATACode.$touched && addCarrierForm.carrierIATACode.$invalid }">
+                <label class="col-xs-3 col-form-label">IATA Code</label>
+                <div class="col-xs-9">
+                    <input class="form-control" type="text" placeholder="Carrier IATA Code" name="carrierIATACode" ng-model="vm._carrier.iataCode" ng-minlength="2" required />
+                    <div class="help-block" ng-messages="addCarrierForm.carrierIATACode.$error" ng-show="addCarrierForm.carrierIATACode.$touched">
+                        <div ng-messages-include="iatacode-validation-messages.html"></div>
+                    </div>
+                </div>
+            </div>
+             <div class="form-group row" ng-class="{ 'has-error': addCarrierForm.carrierBucket.$touched && addCarrierForm.carrierBucket.$invalid }">
+                <label class="col-xs-3 col-form-label">Bucket</label>
+                <div class="col-xs-9">
+                    <input class="form-control" type="text" placeholder="Carrier Bucket" name="carrierBucket" ng-model="vm._carrier.bucket" ng-minlength="2" required />
+                    <div class="help-block" ng-messages="addCarrierForm.carrierBucket.$error" ng-show="addCarrierForm.carrierBucket.$touched">
+                        <div ng-messages-include="iatacode-validation-messages.html"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row" ng-class="{ 'has-error': addCarrierForm.carrierContractType.$touched && addCarrierForm.carrierContractType.$invalid }">
+                <label class="col-xs-3 col-form-label">Contract Type</label>
+                <div class="col-xs-9">
+                    <input class="form-control" type="text" placeholder="Carrier Contract Type" name="carrierContractType" ng-model="vm._carrier.contractType" ng-minlength="3" ng-maxlength="50" required />
+                    <div class="help-block" ng-messages="addCarrierForm.carrierContractType.$error" ng-show="addCarrierForm.carrierContractType.$touched">
+                        <div ng-messages-include="contracttype-validation-messages.html"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="form-check-label col-xs-10">
+                        <input type="checkbox" name="carrierIsActive" ng-model="vm._carrier.isActive" />
+                        Is Active? 
+                    </label>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-9">
+                    <input class="btn btn-default" type="reset" value="Reset" />
+                    <input class="btn btn-default" type="submit" value="Save" ng-disabled="addCarrierForm.$invalid" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>-->
