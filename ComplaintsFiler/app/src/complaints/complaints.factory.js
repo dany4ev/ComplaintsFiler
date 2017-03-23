@@ -14,7 +14,7 @@ function factory(commonFactory, dataService) {
 
         createComplaint: function (addComplaintForm, complaint) {
             if (commonFactory.validate(addComplaintForm)) {
-                promise = dataService.createComplaint(carrier);
+                promise = dataService.createComplaint(complaint);
             } else {
                 promise = commonFactory.rejectPromise(promise);
             }

@@ -16,33 +16,33 @@ function controller($rootScope, $stateParams, $timeout, $location, complaintsFac
         vm.totalItems = arg;
     };
 
-    // vm.initCarriers = function () {
+     vm.initComplaints = function () {
 
-    //     spinnerService.show("spinner");
+         spinnerService.show("spinner");
 
-    //     carrierFactory.getCarriersList()
-    //         .then(function (response) {
-    //             spinnerService.hide("spinner");
-    //             vm._carriersList = response.plain();
-    //             commonFactory.logMessage("success");
-    //         }, function () {
-    //             spinnerService.hide("spinner");
-    //             commonFactory.logMessage("error");
-    //         });
-    // };
+         complaintsFactory.getComplaintsList()
+             .then(function (response) {
+                 spinnerService.hide("spinner");
+                 vm._complaintsList = response.plain();
+                 commonFactory.logMessage("success");
+             }, function (response) {
+                 spinnerService.hide("spinner");
+                 commonFactory.logMessage("error");
+             });
+     };
 
-    // vm.addCarrier = function (addCarrierForm, carrier) {
-    //     carrierFactory.createCarrier(addCarrierForm, carrier)
-    //         .then(function () {
-    //             commonFactory.logMessage("success");
-    //             commonFactory.redirect("listcarriers", 1000);
-    //         })
-    //         .catch(function () {
-    //             commonFactory.logMessage("error: promise rejected");
-    //         });
-    // };
+     vm.addComplaint = function (addComplaintsForm, complaints) {
+         complaintsFactory.createComplaint(addComplaintsForm, complaints)
+             .then(function (response) {
+                 commonFactory.logMessage("success");
+                 commonFactory.redirect("listcomplaints", 1000);
+             })
+             .catch(function (response) {
+                 commonFactory.logMessage("error: promise rejected");
+             });
+     };
 
-    // vm.reset = function () {
-    //     vm._carrier = {};
-    // };
+     vm.reset = function () {
+         vm._complaint = {};
+     };
 }

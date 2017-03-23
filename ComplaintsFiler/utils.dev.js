@@ -1,6 +1,6 @@
 module.exports = {
 
     getAPIURL: function () {
-        return "http://localhost:1885/";
+        return "http://localhost:3000/";
     }
 }

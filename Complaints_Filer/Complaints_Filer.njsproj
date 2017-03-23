@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8168d7c7-8912-4eef-9597-e7c3b2a309bb}</ProjectGuid>
     <ProjectHome>D:\ComplaintsFiler\ComplaintsFiler\</ProjectHome>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>app.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -16,6 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include="app\src\complaints\listcomplaintsdetails.html" />
     <Content Include="package.json" />
     <Compile Include="app.js" />
     <Compile Include="utils.dev.js" />

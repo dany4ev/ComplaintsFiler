@@ -20,6 +20,16 @@ function configuration($stateProvider) {
                 }
             }
         })
+        .state("shell.listcomplaintsdetails", {
+            url: "listcomplaintsdetails/:id",
+            title: "List Complaints Details",
+            views: {
+                'content@shell': {
+                    template: require("./listcomplaintsdetails.html"),
+                    controller: "complaintsController as vm"
+                }
+            }
+        })
         .state("shell.addcomplaints", {
             url: "addcomplaints",
             title: "Add Complaints",
