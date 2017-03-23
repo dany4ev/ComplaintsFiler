@@ -5,12 +5,19 @@ var path = require('path');
 
 /* GET complaints. */
 router.get('/', function (req, res) {
-    res.json({title: 'complaints', data: {name:'danish'}});
+    //res.json({ data: {name:'danish'}});
 });
 
 /* POST complaints. */
 router.post('/', function (req, res) {
-    res.json({title: 'complaints', data: req});
+    var savedComplaints = [];
+    savedComplaints.push({
+        name: req.body.name,
+        emailAddress: req.body.emailAddress,
+        complaint: req.body.complaint
+    });
+    res.json(savedComplaints);
 });
+
 
 module.exports = router;

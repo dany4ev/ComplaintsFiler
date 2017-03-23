@@ -6,14 +6,18 @@ module.exports = factory;
 
 function factory(Restangular, restangularWithTokenFactory, $http, $q) {
 
-  return {
+    return {
 
-    getComplaintsList: function () {
-      return restangularWithTokenFactory.all("complaints").get([]);
-    },
+        getComplaintsList: function () {
+            return restangularWithTokenFactory.all("complaints").get([]);
+        },
 
-    createComplaint: function (entity) {
-      return restangularWithTokenFactory.all("complaints").post(entity);
-    },
-  };
+        getComplaint: function (id) {
+            return restangularWithTokenFactory.all("complaints/" + id).get([]);
+        },
+
+        createComplaint: function (entity) {
+            return restangularWithTokenFactory.all("complaints").post(entity);
+        },
+    };
 }

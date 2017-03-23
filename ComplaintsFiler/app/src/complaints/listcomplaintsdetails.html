@@ -1,0 +1,25 @@
+<div class="container" ng-init="vm.initComplaint()">
+    <div class="row custom-dimensions">
+        <h3>Details</h3>
+        <dl>
+            <dt>
+                Resident Name
+            </dt>
+            <dd>
+                {{vm._complaint.name}}
+            </dd>
+            <dt>
+                Email Address
+            </dt>
+            <dd>
+                {{vm._complaint.emailAddress}}
+            </dd>
+            <dt>
+                Complaint
+            </dt>
+            <dd>
+                {{vm._complaint.complaint}}
+            </dd>
+        </dl>
+    </div>
+</div>

@@ -8,8 +8,13 @@ function factory(commonFactory, dataService) {
     var promise = commonFactory.deferredPromise();
 
     return {
+
         getComplaintsList: function () {
             return dataService.getComplaintsList();
+        },
+
+        getComplaint: function (id) {
+            return dataService.getComplaint(id);
         },
 
         createComplaint: function (addComplaintForm, complaint) {

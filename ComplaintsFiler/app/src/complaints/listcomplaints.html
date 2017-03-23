@@ -12,20 +12,24 @@
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
+                            <th ng-click="predicate='name'; reverse=!reverse">Resident Name</th>
+                            <th ng-click="predicate='email'; reverse=!reverse">Email</th>
                             <th ng-click="predicate='complaint'; reverse=!reverse">Complaint</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>                        
                         <tr ng-repeat="complaints in vm._complaintsList | pagination: vm.totalItems | limitTo: vm.pageSize | orderBy:predicate:reverse">
+                            <td>{{complaints.name}}</td>
+                            <td>{{complaints.emailAddress}}</td>
                             <td>{{complaints.complaint}}</td>
                             <td class="action-column">
-                                <!--<a ui-sref="shell.listcomplaintdetail({id:complaint.id})" title="View Complaint"><i class="fa fa-eye"></i></a>-->                                |
+                                <a ui-sref="shell.listcomplaintsdetails({id:complaint.id})" title="View Complaint"><i class="fa fa-eye"></i></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div paginate datalist="vm._complaintsList" on-pagination-updated="vm.onPaginationUpdated(directiveData)"></div>
+                <!--<div paginate datalist="vm._complaintsList" on-pagination-updated="vm.onPaginationUpdated(directiveData)"></div>-->
             </div>
         </div>
     </div>
