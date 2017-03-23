@@ -15,8 +15,11 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+// image file uploaded assets
+app.use(express.static(path.join(__dirname, 'uploads')));
+// public assets
 app.use(express.static(path.join(__dirname, 'public')));
 // enable cors based ajax requests
 app.use(cors());

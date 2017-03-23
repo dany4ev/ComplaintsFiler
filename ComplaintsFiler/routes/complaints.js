@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var db = require('../db.js');
+var upload = require('../uploadImage.js');
 
 /* GET complaints. */
 router.get('/', function (req, res) {
@@ -27,5 +28,15 @@ router.post('/', function (req, res) {
     res.json(savedComplaints);
 });
 
+/** API path that will upload the files */
+router.post('/upload', function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            res.json({ error_code: 1, err_desc: err });
+            return;
+        }
+        res.json({ error_code: 0, err_desc: null });
+    });
+});
 
 module.exports = router;

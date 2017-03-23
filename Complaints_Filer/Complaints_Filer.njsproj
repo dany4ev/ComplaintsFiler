@@ -20,6 +20,7 @@
     <Content Include="package.json" />
     <Compile Include="app.js" />
     <Compile Include="db.js" />
+    <Compile Include="uploadImage.js" />
     <Compile Include="utils.dev.js" />
     <Compile Include="webpack.config.js" />
     <Content Include="app\index.html" />
@@ -77,6 +78,7 @@
     <Folder Include="public" />
     <Folder Include="public\images" />
     <Folder Include="public\javascripts" />
+    <Folder Include="uploads\" />
     <Folder Include="public\stylesheets" />
     <Folder Include="routes" />
     <Folder Include="views" />
