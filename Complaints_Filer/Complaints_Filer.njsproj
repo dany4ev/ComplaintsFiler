@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8168d7c7-8912-4eef-9597-e7c3b2a309bb}</ProjectGuid>
     <ProjectHome>D:\ComplaintsFiler\ComplaintsFiler\</ProjectHome>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile>app.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -19,6 +19,7 @@
     <Content Include="app\src\complaints\listcomplaintsdetails.html" />
     <Content Include="package.json" />
     <Compile Include="app.js" />
+    <Compile Include="db.js" />
     <Compile Include="utils.dev.js" />
     <Compile Include="webpack.config.js" />
     <Content Include="app\index.html" />
