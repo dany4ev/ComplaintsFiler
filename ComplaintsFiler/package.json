@@ -41,7 +41,8 @@
     "sqlite3": "^3.1.8",
     "tedious": "^1.15.0",
     "ui-bootstrap": "^0.1.10",
-    "ui-router": "^1.0.0-alpha0"
+    "ui-router": "^1.0.0-alpha0",
+    "webcam": "^3.1.1"
   },
   "devDependencies": {
     "webpack": "^1.14.0",

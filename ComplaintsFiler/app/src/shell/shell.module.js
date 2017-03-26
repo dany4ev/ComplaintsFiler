@@ -1,11 +1,12 @@
 "use strict";
 
 require("angular-spinners");
+require("../../../node_modules/webcam/app/scripts/webcam.js");
 
 var name = module.exports = "complaintsfiler.shell";
 
 angular
-    .module(name, ["angularSpinners"])
+    .module(name, ["angularSpinners", "webcam"])
     .config(configuration)
     .controller("shellController", require("./shell.controller.js"))
     .factory("shellFactory", require("./shell.factory.js"))
