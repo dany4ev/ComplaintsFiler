@@ -35,8 +35,11 @@
     "nodemon": "^1.11.0",
     "pluralize": "^4.0.0",
     "restangular": "^1.5.2",
+    "sequelize": "^3.30.3",
+    "sequelize-cli": "^2.6.0",
     "serve-favicon": "^2.3.0",
     "sqlite3": "^3.1.8",
+    "tedious": "^1.15.0",
     "ui-bootstrap": "^0.1.10",
     "ui-router": "^1.0.0-alpha0"
   },

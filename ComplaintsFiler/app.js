@@ -4,27 +4,31 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors = require('cors');
 var app = express();
-var index = require('./routes/index');
-var complaints = require('./routes/complaints');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// middleware registrations
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 // image file uploaded assets
 app.use(express.static(path.join(__dirname, 'uploads')));
+
 // public assets
 app.use(express.static(path.join(__dirname, 'public')));
+
 // enable cors based ajax requests
-app.use(cors());
-app.use('/', index);
-app.use('/complaints', complaints);
+app.use(require('cors')());
+
+// controller routes
+app.use('/', require('./routes/index'));
+app.use('/complaints', require('./routes/complaints'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,6 +48,9 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-app.listen(3000);
+// listen for requests
+var listener = app.listen(process.env.PORT || 3000, function () {
+    console.log('Your app is listening on port ' + listener.address().port);
+});
 
 module.exports = app;

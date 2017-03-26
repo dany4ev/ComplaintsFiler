@@ -2,41 +2,46 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var db = require('../db.js');
-var upload = require('../uploadImage.js');
+//var upload = require('../uploadImage.js');
+var sequelize = require('../models/index.js');
+
 
 /* GET complaints. */
 router.get('/', function (req, res) {
-    //res.json({ data: {name:'danish'}});
+    var dbComplaints = [];
+    Complaint.findAll().then(function (complaints) { // find all entries in the complaint tables
+        complaints.forEach(function (complaint) {
+            dbComplaints.push({
+                name: complaint.name,
+                emailAddress: complaint.emailAddress,
+                complaint: complaint.complaint
+            }); // adds their info to the dbUsers value
+        });
+        response.send(dbComplaints); // sends dbComplaints back to the page
+    });
 });
 
 /* POST complaints. */
 router.post('/', function (req, res) {
-    var savedComplaints = [],
-        complaint = {
-            name: req.body.name,
-            emailAddress: req.body.emailAddress,
-            complaint: req.body.complaint
-        };
-    savedComplaints.push(complaint);
-    var stmt = db.prepare("INSERT INTO complaint VALUES (?)");
-    stmt.run("Thing #" + complaint);
-    db.each("SELECT rowid AS id, thing FROM complaint", function (err, row) {
-        console.log(row.id + ": " + row.thing);
+
+    Complaint.create({
+        name: req.body.name,
+        emailAddress: req.body.emailAddress,
+        complaint: req.body.complaint 
     });
-    db.close();
-    res.json(savedComplaints);
+
+    res.sendStatus(200);
 });
 
 /** API path that will upload the files */
 router.post('/upload', function (req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            res.json({ error_code: 1, err_desc: err });
-            return;
-        }
-        res.json({ error_code: 0, err_desc: null });
-    });
+    //upload(req, res, function (err) {
+    //    if (err) {
+    //        res.json({ error_code: 1, err_desc: err });
+    //        return;
+    //    }
+    //    res.json({ error_code: 0, err_desc: null });
+    //});
 });
 
 module.exports = router;

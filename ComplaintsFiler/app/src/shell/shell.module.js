@@ -1,12 +1,11 @@
 "use strict";
 
 require("angular-spinners");
-require("@lordfriend/nya-bootstrap-select");
 
 var name = module.exports = "complaintsfiler.shell";
 
 angular
-    .module(name, ["nya.bootstrap.select", "angularSpinners"])
+    .module(name, ["angularSpinners"])
     .config(configuration)
     .controller("shellController", require("./shell.controller.js"))
     .factory("shellFactory", require("./shell.factory.js"))
