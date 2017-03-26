@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 //var upload = require('../uploadImage.js');
-var sequelize = require('../models/index.js');
+var Complaint = require('../models/index.js');
 
 
 /* GET complaints. */

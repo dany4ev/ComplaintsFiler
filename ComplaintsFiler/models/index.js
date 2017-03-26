@@ -18,12 +18,12 @@ var sequelizeConnection = new Sequelize('database', 'root', 'test', {
 });
 
 // authenticate with the database
-connection.authenticate()
+sequelizeConnection.authenticate()
     .then(function (err) {
         console.log('Connection has been established successfully.');
 
         //define a new table complaints
-        Complaints = sequelizeConnection.define('complaints', {
+        Complaint = sequelizeConnection.define('complaints', {
             name: Sequelize.STRING,
             emailAddress: Sequelize.STRING,
             complaint: Sequelize.TEXT
@@ -34,9 +34,9 @@ connection.authenticate()
         // populate table with default data (seed e.g.)
         Complaint.sync({ force: true }) // using 'force' it drops the table if it already exists, and creates a new one
             .then(function (data) { });
+
+        module.exports = Complaint;
     })
     .catch(function (err) {
         console.log('Unable to connect to the database: ', err);
     });
-
-module.exports = Complaint;

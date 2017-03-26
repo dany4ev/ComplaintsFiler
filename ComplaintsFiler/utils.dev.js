@@ -1,7 +1,7 @@
 module.exports = {
 
     getAPIURL: function () {
-        return "http://localhost:3000/";
+        return "http://localhost:" + this.getServerApiPort() + "/";
     },
 
     getServerApiPort: function () {
