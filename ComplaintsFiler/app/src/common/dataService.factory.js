@@ -9,15 +9,15 @@ function factory(Restangular, restangularWithTokenFactory, $http, $q) {
     return {
 
         getComplaintsList: function () {
-            return restangularWithTokenFactory.all("complaints").get([]);
+            return Restangular.all("complaints").get([]);
         },
 
         getComplaint: function (id) {
-            return restangularWithTokenFactory.all("complaints/" + id).get([]);
+            return Restangular.one("complaints/" + id).get([]);
         },
 
         createComplaint: function (entity) {
-            return restangularWithTokenFactory.all("complaints").post(entity);
+            return Restangular.all("complaints").post(entity);
         },
     };
 }

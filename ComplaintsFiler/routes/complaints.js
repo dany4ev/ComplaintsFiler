@@ -1,39 +1,67 @@
 'use strict';
+
 var express = require('express');
 var router = express.Router();
 var path = require('path');
 //var upload = require('../uploadImage.js');
-var Complaint = require('../models/index.js');
+var m = require('../models/model.js');
+
+// Generate a v4 UUID (random)
+const uuidV4 = require('uuid/v4');
 
 
-/* GET complaints. */
 router.get('/', function (req, res) {
-    var dbComplaints = [];
-    Complaint.findAll().then(function (complaints) { // find all entries in the complaint tables
-        complaints.forEach(function (complaint) {
-            dbComplaints.push({
-                name: complaint.name,
-                emailAddress: complaint.emailAddress,
-                complaint: complaint.complaint
-            }); // adds their info to the dbUsers value
-        });
-        response.send(dbComplaints); // sends dbComplaints back to the page
+    m.models.complaint.findAll({
+        order: 'createdAt DESC'
+    }).then(function (result) {
+        res.send(result);
+    }, function (err) {
+        console.log(err);
     });
 });
 
-/* POST complaints. */
+router.get('/:id', function (req, res) {
+    var id = req.params.id;
+    m.models.complaint.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (result) {
+        res.send(result);
+    }, function (err) {
+        console.log(err);
+    });
+});
+
 router.post('/', function (req, res) {
 
-    Complaint.create({
-        name: req.body.name,
-        emailAddress: req.body.emailAddress,
-        complaint: req.body.complaint 
-    });
+    var id = uuidV4(),
+        name = req.body.name,
+        emailAddress = req.body.emailAddress,
+        complaint = req.body.complaint,
+        picture = req.body.picture,
+        location = req.body.location || "";
 
-    res.sendStatus(200);
+    m.models.complaint.sync()
+        .then(function () {
+            return m.models.complaint.create({
+                id: id,
+                name: name,
+                emailAddress: emailAddress,
+                complaint: complaint,
+                picture: picture,
+                location: location
+            });
+        })
+        .then(function (data) {
+            res.send({
+                status: 'OK',
+                data: data
+            });
+        });
+
 });
 
-/** API path that will upload the files */
 router.post('/upload', function (req, res) {
     //upload(req, res, function (err) {
     //    if (err) {

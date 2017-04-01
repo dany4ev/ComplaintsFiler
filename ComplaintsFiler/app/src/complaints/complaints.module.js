@@ -20,9 +20,9 @@ function configuration($stateProvider) {
                 }
             }
         })
-        .state("shell.listcomplaintsdetails", {
-            url: "listcomplaintsdetails/:id",
-            title: "List Complaints Details",
+        .state("shell.listcomplaintdetails", {
+            url: "listcomplaintdetails/:id",
+            title: "List Complaint Details",
             views: {
                 'content@shell': {
                     template: require("./listcomplaintsdetails.html"),

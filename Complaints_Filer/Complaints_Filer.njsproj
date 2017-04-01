@@ -20,6 +20,7 @@
     <Content Include="package.json" />
     <Compile Include="app.js" />
     <Compile Include="models\index.js" />
+    <Compile Include="models\model.js" />
     <Compile Include="uploadImage.js" />
     <Compile Include="utils.dev.js" />
     <Compile Include="webpack.config.js" />

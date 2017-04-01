@@ -10,11 +10,11 @@ function factory(commonFactory, dataService) {
     return {
 
         getComplaintsList: function () {
-            return dataService.getComplaintsList();
+            return dataService.getComplaintsList() || commonFactory.rejectPromise(promise);
         },
 
         getComplaint: function (id) {
-            return dataService.getComplaint(id);
+            return dataService.getComplaint(id) || commonFactory.rejectPromise(promise);
         },
 
         createComplaint: function (addComplaintForm, complaint) {
