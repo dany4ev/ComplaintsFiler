@@ -38,9 +38,11 @@ router.post('/', function (req, res) {
     var id = uuidV4(),
         name = req.body.name,
         emailAddress = req.body.emailAddress,
+        Address = req.body.Address,
         complaint = req.body.complaint,
         picture = req.body.picture,
-        location = req.body.location || "";
+        latitude = req.body.latitude,
+        longitude = req.body.longitude;
 
     m.models.complaint.sync()
         .then(function () {
@@ -48,9 +50,11 @@ router.post('/', function (req, res) {
                 id: id,
                 name: name,
                 emailAddress: emailAddress,
+                Address: Address,
                 complaint: complaint,
                 picture: picture,
-                location: location
+                latitude: latitude,
+                longitude: longitude
             });
         })
         .then(function (data) {
