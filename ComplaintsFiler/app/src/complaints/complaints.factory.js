@@ -17,8 +17,11 @@ function factory(commonFactory, dataService) {
             return dataService.getComplaint(id) || commonFactory.rejectPromise(promise);
         },
 
-        createComplaint: function (addComplaintForm, complaint) {
+        createComplaint: function (addComplaintForm, complaint, snapshotData, latlng) {
             if (commonFactory.validate(addComplaintForm)) {
+                complaint.picture = snapshotData;
+                complaint.latitude = latlng.latitude;
+                complaint.longitude = latlng.longitude;
                 promise = dataService.createComplaint(complaint);
             } else {
                 promise = commonFactory.rejectPromise(promise);

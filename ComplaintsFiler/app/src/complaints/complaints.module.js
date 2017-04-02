@@ -6,7 +6,14 @@ angular
     .module(name, [])
     .config(configuration)
     .controller("complaintsController", require("./complaints.controller.js"))
-    .factory("complaintsFactory", require("./complaints.factory.js"));
+    .factory("complaintsFactory", require("./complaints.factory.js"))
+    .run(function ($rootScope) {
+        $rootScope.$on('mapInitialized', function (evt, map) {
+            $rootScope.map = map;
+            $rootScope.$apply();
+        });
+    })
+    ;
 
 function configuration($stateProvider) {
     $stateProvider

@@ -5,7 +5,7 @@ module.exports = controller;
 /* @ngInject */
 
 function controller($scope, $rootScope, $state, $stateParams, $timeout, $location, complaintsFactory,
-    storageFactory, commonFactory, dataService, spinner, spinnerService, CurrentPage, PageSize) {
+    storageFactory, commonFactory, dataService, spinner, spinnerService, CurrentPage, PageSize, NgMap) {
 
     var vm = this;
     vm.spinner = spinner;
@@ -102,8 +102,21 @@ function controller($scope, $rootScope, $state, $stateParams, $timeout, $locatio
         vm.totalItems = arg;
     };
 
+    vm.latlng = [24.8666667, 67.05];
+    vm.getpos = function (event) {
+        commonFactory.logMessage(event.latLng);
+        vm.latlng = [{ latitude: event.latLng.lat(), longitude: event.latLng.lng() }];
+    };
+
     vm.initComplaints = function () {
         spinnerService.show("spinner");
+
+        NgMap.getMap().then(function (map) {
+            commonFactory.logMessage(map.getCenter());
+            commonFactory.logMessage('markers', map.markers);
+            commonFactory.logMessage('shapes', map.shapes);
+        });
+
         complaintsFactory.getComplaintsList()
             .then(function (response) {
                 spinnerService.hide("spinner");
@@ -128,9 +141,9 @@ function controller($scope, $rootScope, $state, $stateParams, $timeout, $locatio
             });
     };
 
-    vm.addComplaint = function (addComplaintsForm, complaints) {
-        complaints.picture = vm.snapshotData;
-        complaintsFactory.createComplaint(addComplaintsForm, complaints)
+    vm.addComplaint = function (addComplaintsForm, complaint) {
+        complaintsFactory.createComplaint(addComplaintsForm,
+            complaint, vm.snapshotData, vm.latlng)
             .then(function (response) {
                 commonFactory.logMessage("success");
                 storageFactory.save("savedComplaints", response.plain());

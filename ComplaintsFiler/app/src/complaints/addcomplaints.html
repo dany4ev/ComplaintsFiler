@@ -20,6 +20,16 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group row" ng-class="{ 'has-error': addComplaintForm.Address.$touched && addComplaintForm.Address.$invalid }">
+                <label class="col-xs-3 col-form-label">Address</label>
+                <div class="col-xs-9">
+                    <textarea name="Address" title="Address" placeholder="Address" class="form-control input-md"
+                              ng-model="vm._complaint.address" rows="5" ng-minlength="10" required></textarea>
+                    <div class="help-block" ng-messages="addComplaintForm.Address.$error" ng-show="addComplaintForm.Address.$touched">
+                        <div ng-messages-include="name-validation-messages.html"></div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group row" ng-class="{ 'has-error': addComplaintForm.Complaint.$touched && addComplaintForm.Complaint.$invalid }">
                 <label class="col-xs-3 col-form-label">Complaint</label>
                 <div class="col-xs-9">
@@ -43,6 +53,16 @@
                     <!--<button ng-click="vm.downloadSnapshot(vm.snapshotData)" ng-disabled="!vm.snapshotData" class="btn btn-large btn-primary">Download ^^</button>
                     <button class="btn btn-small" ng-click="showBase64 = !showBase64">Show as base64 encoded URL</button>
                     <textarea class="snapshot-data" ng-model="vm.snapshotData" ng-show="showBase64"></textarea>-->
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-3 col-form-label">Select Location in Map</label>
+                <div class="col-xs-9">
+                    <ng-map center="{{vm.latlng}}" on-click="vm.getpos($event)" default-style="true" center="current-location" zoom="5">
+                        <marker position="{{vm.latlng}}" on-dragend="vm.getpos($event)" animation="Animation.BOUNCE" animation="DROP" draggable="true">
+                        </marker>
+                    </ng-map>
+                    {{vm.latlng.latitude}} - {{vm.latlng.longitude}}
                 </div>
             </div>
             <div class="form-group row">
