@@ -10,30 +10,30 @@ var m = require('../models/model.js');
 const uuidV4 = require('uuid/v4');
 
 
-router.get('/', function (req, res) {
+router.get('/', function(req, res) {
     m.models.complaint.findAll({
         order: 'createdAt DESC'
-    }).then(function (result) {
+    }).then(function(result) {
         res.send(result);
-    }, function (err) {
+    }, function(err) {
         console.log(err);
     });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/:id', function(req, res) {
     var id = req.params.id;
     m.models.complaint.findOne({
         where: {
             id: id
         }
-    }).then(function (result) {
+    }).then(function(result) {
         res.send(result);
-    }, function (err) {
+    }, function(err) {
         console.log(err);
     });
 });
 
-router.post('/', function (req, res) {
+router.post('/', function(req, res) {
 
     var id = uuidV4(),
         name = req.body.name,
@@ -45,19 +45,19 @@ router.post('/', function (req, res) {
         longitude = req.body.longitude;
 
     m.models.complaint.sync()
-        .then(function () {
+        .then(function() {
             return m.models.complaint.create({
                 id: id,
                 name: name,
                 emailAddress: emailAddress,
-                Address: Address,
+                residentAddress: Address,
                 complaint: complaint,
                 picture: picture,
                 latitude: latitude,
                 longitude: longitude
             });
         })
-        .then(function (data) {
+        .then(function(data) {
             res.send({
                 status: 'OK',
                 data: data
@@ -66,7 +66,7 @@ router.post('/', function (req, res) {
 
 });
 
-router.post('/upload', function (req, res) {
+router.post('/upload', function(req, res) {
     //upload(req, res, function (err) {
     //    if (err) {
     //        res.json({ error_code: 1, err_desc: err });

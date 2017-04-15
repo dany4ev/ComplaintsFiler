@@ -9,7 +9,7 @@ Complaint = c.config.db.define('complaints', {
     id: { type: Sequelize.STRING, field: 'id', primaryKey: true, allowNull: false },
     name: { type: Sequelize.STRING, field: 'resident_name', allowNull: true },
     emailAddress: { type: Sequelize.STRING, field: 'resident_email', allowNull: true },
-    Address: { type: Sequelize.STRING, field: 'resident_address', allowNull: true },
+    residentAddress: { type: Sequelize.STRING, field: 'resident_address', allowNull: true },
     complaint: { type: Sequelize.TEXT, field: 'resident_complaint', allowNull: true },
     picture: { type: Sequelize.BLOB, field: 'resident_complaint_picture', allowNull: true },
     locationLatitude: { type: Sequelize.STRING, field: 'resident_complaint_location_latitude', allowNull: true },
