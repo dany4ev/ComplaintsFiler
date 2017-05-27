@@ -2,7 +2,7 @@
 
 require("angular-spinners");
 require("ngMap");
-require("../../../node_modules/webcam/app/scripts/webcam.js");
+require("../../node_modules/webcam/app/scripts/webcam.js");
 
 var name = module.exports = "complaintsfiler.shell";
 
@@ -13,8 +13,7 @@ angular
     .factory("shellFactory", require("./shell.factory.js"))
     .constant("spinner", require("../../public/images/ajax-loader.gif"))
     .value("PageSize", 10)
-    .value("CurrentPage", 0)
-    ;
+    .value("CurrentPage", 0);
 
 function configuration($stateProvider) {
 
@@ -33,6 +32,5 @@ function configuration($stateProvider) {
                     template: require("./footer.html")
                 }
             }
-        })
-    ;
+        });
 }

@@ -4,11 +4,11 @@ var webpack = require('webpack')
 
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var jsFolderName = 'build/'
+var jsFolderName = 'build'
 var htmlPath = jsFolderName + '/'
 
 module.exports = {
-    context: path.join(__dirname, '/ComplaintsFilerAngular1App'),
+    context: path.join(__dirname, '/'),
     entry: {
         app: [
             'webpack/hot/dev-server',
